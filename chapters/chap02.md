@@ -328,6 +328,6 @@ adjustmentSets(rhc_dag, type = "minimal")
 
 <div align="center">
 
-[← 第 1 章 · 问题与数据](chap01.md) &nbsp;·&nbsp; [📖 返回目录](../README.md) &nbsp;·&nbsp; [第 3 章 · 回归调整 →](chap03.md)
+[← 第 1 章 · 问题与数据](chap01.md) &nbsp;·&nbsp; [返回目录](../README.md) &nbsp;·&nbsp; [第 3 章 · 回归调整 →](chap03.md)
 
 </div>

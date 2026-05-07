@@ -275,3 +275,11 @@ tmle_se <- sd(IC) / sqrt(nrow(d))
 | ML 不能解决可交换性 | 模型只能学测量到的协变量，未测量混杂仍是黑箱 | ML 自动找到所有混杂 | ML 拟合的是 $E[Y \mid A, L]$ ，与 $E[Y(a) \mid L]$ 之间靠的是 DAG 推理，不是数据 |
 
 </div>
+
+---
+
+<div align="center">
+
+[← 第 6 章 · AIPW 双重稳健](chap06.md) &nbsp;·&nbsp; [返回目录](../README.md) &nbsp;·&nbsp; [第 8 章 · 敏感性分析 →](chap08.md)
+
+</div>

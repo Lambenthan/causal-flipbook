@@ -264,3 +264,11 @@ ggplot(data.frame(tau = tau_hat), aes(x = tau)) +
 | 个体 CATE 标准误 | 单个 $\hat\tau(L_i)$ 的 SE 远大于 CATE 自身标准差 | CATE 数字可以直接做临床决策 | 噪声往往掩盖真实差异，CATE 主要价值在分布层面而非个体层面 |
 
 </div>
+
+---
+
+<div align="center">
+
+[← 第 8 章 · 敏感性分析](chap08.md) &nbsp;·&nbsp; [返回目录](../README.md) &nbsp;·&nbsp; [第 10 章 · 全书汇总 →](chap10.md)
+
+</div>

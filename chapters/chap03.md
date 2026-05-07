@@ -294,6 +294,6 @@ $$\tilde\beta_1 = \beta_1 + \gamma \cdot \delta$$
 
 <div align="center">
 
-[← 第 2 章 · 因果结构与识别条件](chap02.md) &nbsp;·&nbsp; [📖 返回目录](../README.md) &nbsp;·&nbsp; [第 4 章 · G 计算 →](chap04.md)
+[← 第 2 章 · 因果结构与识别条件](chap02.md) &nbsp;·&nbsp; [返回目录](../README.md) &nbsp;·&nbsp; [第 4 章 · G 计算 →](chap04.md)
 
 </div>

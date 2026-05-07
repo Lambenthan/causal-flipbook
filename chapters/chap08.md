@@ -242,3 +242,11 @@ cat(sprintf("Point E-value: %.4f\nCI-lower E-value: %.4f\n", ev_point, ev_lo))
 | 敏感性 ≠ 不确定性 | 95% CI 量化抽样不确定性，敏感性分析量化未测量混杂的脆弱性 | 两个指标可以互相替代 | CI 不会因为有未测量混杂而变宽，敏感性分析也不会因为样本量增大而变小 |
 
 </div>
+
+---
+
+<div align="center">
+
+[← 第 7 章 · 机器学习增强](chap07.md) &nbsp;·&nbsp; [返回目录](../README.md) &nbsp;·&nbsp; [第 9 章 · 因果森林 →](chap09.md)
+
+</div>
