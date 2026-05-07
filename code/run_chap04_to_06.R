@@ -7,13 +7,12 @@ suppressPackageStartupMessages({
   library(WeightIt)
   library(cobalt)
   library(broom)
+  library(here)
 })
 
 set.seed(2026)
 
-DATA_PATH <- "/Users/han/Desktop/AI_Plan/2026LLM/Media_Paper/CausalInferenceBook-v2/data/rhc.csv"
-
-d <- read_csv(DATA_PATH, show_col_types = FALSE) |>
+d <- read_csv(here("data", "rhc.csv"), show_col_types = FALSE) |>
   mutate(death180_bin = if_else(death180 == "Yes", 1L, 0L),
          rhc_bin      = if_else(rhc == 1, 1L, 0L),
          sex_bin      = if_else(sex == "Male", 1L, 0L),
