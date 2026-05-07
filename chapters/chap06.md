@@ -99,17 +99,16 @@ library(tidyverse)
 
 d <- read_csv(here::here("data", "rhc.csv"), show_col_types = FALSE) |>
   mutate(death180_bin = if_else(death180 == "Yes", 1L, 0L),
-         sex_bin      = if_else(sex == "Male", 1L, 0L),
-         cancer_bin   = if_else(cancer == "No", 0L, 1L))
+         sex_bin      = if_else(sex == "Male", 1L, 0L))
 
-covs <- c("age", "sex_bin", "cancer_bin", "cardiovascular",
-          "congestive_hf", "dementia", "psychiatric", "pulmonary",
-          "renal", "hepatic", "gi_bleed", "tumor",
-          "immunosupperssion", "transfer_hx", "mi",
-          "apache_score", "glasgow_coma_score", "blood_pressure",
-          "heart_rate", "respiratory_rate", "temperature",
-          "albumin", "creatinine", "bilirubin", "wbc",
-          "hematocrit", "das_index", "weight")
+# 与全书统一的 29 协变量调整集
+covs <- c("age", "sex_bin", "edu", "das_index", "apache_score",
+          "glasgow_coma_score", "blood_pressure", "wbc", "heart_rate",
+          "respiratory_rate", "temperature", "albumin", "hematocrit",
+          "bilirubin", "creatinine", "weight",
+          "cancer", "cardiovascular", "congestive_hf", "dementia",
+          "psychiatric", "pulmonary", "renal", "hepatic",
+          "gi_bleed", "tumor", "immunosupperssion", "transfer_hx", "mi")
 
 # 第一路所需：结局模型——预测 Y 在 A 和 L 条件下的期望
 out_mod <- glm(death180_bin ~ rhc + .,
@@ -216,7 +215,7 @@ RHC 数据上倾向得分最小值 0.025 已经压在截断阈值上，截断前
 | 第 1 章 · 粗差异 | RD = 0.0752 | — | 无 | 未调整任何混杂 |
 | 第 3 章 · 回归调整 | OR = 1.29 | [1.13, 1.46] | 模型设定正确 + 可交换性 + 正值性 | OR 尺度不可加，函数形式难以验证 |
 | 第 4 章 · G 计算 | RD = 0.0531 | [0.0260, 0.0819] | 结局模型正确 + 可交换性 + 正值性 | 单依赖结局模型，错了无补救 |
-| 第 5 章 · PSM | RD = 0.0621 | [0.0304, 0.0906] | 处理模型正确 + 可交换性 + 正值性 | 丢弃约 33% 样本，目标人群是匹配人群 |
+| 第 5 章 · PSM | RD = 0.0621 | [0.0304, 0.0906] | 处理模型正确 + 可交换性 + 正值性 | 丢弃约 32.7% 样本，目标人群是匹配人群 |
 | 第 5 章 · IPW | RD = 0.0465 | [0.0162, 0.0725] | 处理模型正确 + 可交换性 + 正值性 | 极端权重放大方差 |
 | 第 5 章 · OW | RD = 0.0533 | [0.0261, 0.0807] | 处理模型正确 + 可交换性 + 正值性 | 估计量从 ATE 变成 ATO |
 | **第 6 章 · AIPW** | **RD = 0.0455** | **[0.0181, 0.0729]** | **两个模型有一个正确即可 + 可交换性 + 正值性** | **两模型同错或正值性严重违反时仍偏** |

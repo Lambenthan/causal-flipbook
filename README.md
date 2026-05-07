@@ -79,6 +79,32 @@
 
 ## 数据与复现
 
-- 原始数据：`/CausalInferenceBook-v2/data/rhc.csv`（5735 行 × 49 列，Connors 1996）
-- 主估计脚本：[code/run_chap04_to_06.R](code/run_chap04_to_06.R) · [code/run_chap07_to_09.R](code/run_chap07_to_09.R)
-- 写作风格指南：[`causal-inference-textbook-writer` skill](../../.claude/skills/causal-inference-textbook-writer/SKILL.md)
+**原始数据**：`/CausalInferenceBook-v2/data/rhc.csv`，5735 行 × 49 列，来自 Connors 1996 *JAMA* 原始研究的整理版。
+
+**最小复现流程**（macOS / Linux，假设已装好 R 4.5+）：
+
+```bash
+# 1. 装 R 包（一次性）
+Rscript -e 'install.packages(c(
+  "tidyverse", "broom", "MatchIt", "WeightIt", "cobalt",
+  "SuperLearner", "DoubleML", "mlr3", "mlr3learners",
+  "ranger", "glmnet", "tmle", "EValue", "sensemakr", "grf"
+))'
+
+# 2. 跑全书 9 种方法的因果估计
+Rscript code/run_chap04_to_06.R   # 回归 / G 计算 / PSM / IPW / OW / AIPW
+Rscript code/run_chap07_to_09.R   # DML / TMLE / E-value / sensemakr / 因果森林
+```
+
+两个脚本统一 `set.seed(2026)`，结果完全可复现。Apple Silicon 启用 vecLib BLAS 后整套约 5–8 分钟跑完；如发现单个 R 命令耗时超过 10 分钟，多半是 BLAS 没启用，参考第 7 章末注释或运行 `Rscript -e 'La_library()'` 检查。
+
+**章节脚本对应表**：
+
+| 脚本 | 产出对象 | RDS 输出 |
+|---|---|---|
+| [code/run_chap04_to_06.R](code/run_chap04_to_06.R) | 回归 OR、G 计算 RD、PSM、IPW、OW、AIPW | `/tmp/rhc_estimates.rds` |
+| [code/run_chap07_to_09.R](code/run_chap07_to_09.R) | DML、TMLE、E-value、sensemakr、CF 因果森林 | `/tmp/rhc_estimates_chap789.rds` |
+
+**完整参考文献**：[references.md](references.md) 列出本书所引用的方法学论文（潜在结果框架、倾向得分、双重稳健、机器学习因果、敏感性分析、因果森林）与 R 包出处。
+
+**写作风格指南**：[`causal-inference-textbook-writer` skill](../../.claude/skills/causal-inference-textbook-writer/SKILL.md)。

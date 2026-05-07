@@ -66,16 +66,16 @@ m3 <- glm(death180_bin ~ rhc + age + sex_bin +
             apache_score + glasgow_coma_score,
           data = d, family = binomial)
 
-# 模型 4：加入合并症 + 全部生理指标
-m4 <- glm(death180_bin ~ rhc + age + sex_bin +
-            apache_score + glasgow_coma_score +
-            cancer + cardiovascular + congestive_hf + dementia +
-            pulmonary + renal + hepatic + blood_pressure +
-            heart_rate + respiratory_rate + temperature +
-            albumin + creatinine + bilirubin + wbc + hematocrit +
-            das_index + dnr_status + medical_insurance + race +
-            income + edu + transfer_hx + mi + gi_bleed +
-            tumor + immunosupperssion + psychiatric,
+# 模型 4：加入合并症 + 全部生理指标，共 29 协变量（全书统一调整集）
+covs_full <- c("age", "sex_bin", "edu", "das_index", "apache_score",
+               "glasgow_coma_score", "blood_pressure", "wbc", "heart_rate",
+               "respiratory_rate", "temperature", "albumin", "hematocrit",
+               "bilirubin", "creatinine", "weight",
+               "cancer", "cardiovascular", "congestive_hf", "dementia",
+               "psychiatric", "pulmonary", "renal", "hepatic",
+               "gi_bleed", "tumor", "immunosupperssion", "transfer_hx", "mi")
+m4 <- glm(as.formula(paste("death180_bin ~ rhc +",
+                            paste(covs_full, collapse = " + "))),
           data = d, family = binomial)
 
 # 提取四个模型中 RHC 的 OR 和 95% CI

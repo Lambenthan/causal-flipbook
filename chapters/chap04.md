@@ -132,18 +132,17 @@ d <- read_csv(here::here("data", "rhc.csv"), show_col_types = FALSE) |>
   mutate(death180_bin = if_else(death180 == "Yes", 1L, 0L),
          sex_bin      = if_else(sex == "Male", 1L, 0L))
 
-# 建模：与第 3 章模型 4 相同的结局模型
+# 建模：与全书统一的 29 协变量结局模型
 # G 计算的全部因果推断负担都压在这个模型上
-outcome_mod <- glm(death180_bin ~ rhc + age + sex_bin +
-  apache_score + glasgow_coma_score +
-  cancer + cardiovascular + congestive_hf + dementia +
-  pulmonary + renal + hepatic + blood_pressure +
-  heart_rate + respiratory_rate + temperature +
-  albumin + creatinine + bilirubin + wbc + hematocrit +
-  das_index + dnr_status + medical_insurance + race +
-  income + edu + transfer_hx + mi + gi_bleed +
-  tumor + immunosupperssion + psychiatric,
-  data = d, family = binomial)
+covs <- c("age", "sex_bin", "edu", "das_index", "apache_score",
+          "glasgow_coma_score", "blood_pressure", "wbc", "heart_rate",
+          "respiratory_rate", "temperature", "albumin", "hematocrit",
+          "bilirubin", "creatinine", "weight",
+          "cancer", "cardiovascular", "congestive_hf", "dementia",
+          "psychiatric", "pulmonary", "renal", "hepatic",
+          "gi_bleed", "tumor", "immunosupperssion", "transfer_hx", "mi")
+fml <- as.formula(paste("death180_bin ~ rhc +", paste(covs, collapse = " + ")))
+outcome_mod <- glm(fml, data = d, family = binomial)
 
 # 预测反事实：构造两个平行世界的数据集
 # 关键操作：只改处理变量，协变量保持每个人的真实值
