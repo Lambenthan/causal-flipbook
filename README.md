@@ -107,9 +107,4 @@ Rscript code/run_chap07_to_09.R   # DML / TMLE / E-value / sensemakr / 因果森
 
 **完整参考文献**：[references.md](references.md) 列出本书所引用的方法学论文（潜在结果框架、倾向得分、双重稳健、机器学习因果、敏感性分析、因果森林）与 R 包出处。
 
-**额外读物**：
-
-- [病人故事跟读](patient-stories.md)：跟着 5 位真实 RHC 患者走完全书，把 ATE 还原成具体人脸，看 9 种方法对张三李四王五各自给出的预测有多不一样。
-- [错误示范画廊](anti-patterns.md)：在 RHC 数据上故意做错给读者看，6 种错误调整集（漏强混杂、控制处理后变量、控制对撞节点等）让 ATE 估计偏到 +0.08 或翻到 −0.19，亲眼看到错的样子。
-
 **写作风格指南**：[`causal-inference-textbook-writer` skill](../../.claude/skills/causal-inference-textbook-writer/SKILL.md)。
