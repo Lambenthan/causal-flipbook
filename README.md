@@ -26,10 +26,10 @@
 | [第 4 章](chapters/chap04.md) | G 计算：构造反事实人群 | 反事实预测 + bootstrap | 两列填补 · 分层标准化 · bootstrap CI |
 | [第 5 章](chapters/chap05.md) | 倾向得分：匹配、加权与平衡诊断 | PSM、IPW、OW | 降维定理 · PSM 配对 · IPW 权重雷区 |
 | [第 6 章](chapters/chap06.md) | 双重稳健估计：AIPW 的两路加权 | AIPW 手动实现 | 偏差交叉消除 · AIPW vs 单模型 |
-| [第 7 章](chapters/chap07.md) | 机器学习增强：Super Learner、DML 与 TMLE | DML + TMLE | Neyman 正交 · 样本分裂 · targeting step |
-| [第 8 章](chapters/chap08.md) | 敏感性分析：未测量混杂的压力测试 | E-value + sensemakr | 翻盘混杂强度 · APACHE 基准化 |
-| [第 9 章](chapters/chap09.md) | 异质性效应：因果森林与个体化 CATE | grf 因果森林 | CATE 分布 · 变量重要性 · BLP |
-| [第 10 章](chapters/chap10.md) | 全书汇总：十种方法的终极对比 | 终极对比表 + 结论 | 跨方法收敛 · 因果方向 · 政策建议 |
+| [第 7 章](chapters/chap07.md) | 机器学习增强：Super Learner、DML 与 TMLE | DML + TMLE | 参数模型天花板 · SL 凸组合 · 5 折交叉拟合 · targeting step · 9 方法收敛 |
+| [第 8 章](chapters/chap08.md) | 敏感性分析：未测量混杂的压力测试 | E-value + sensemakr | 未测量混杂 DAG · E-value 曲线 · APACHE 基准 · 稳健等高线 |
+| [第 9 章](chapters/chap09.md) | 异质性效应：因果森林与个体化 CATE | grf 因果森林 | ATE vs CATE · 诚实分裂 · CATE 直方图 · 变量重要性 · 子群 CATE |
+| [第 10 章](chapters/chap10.md) | 全书汇总：十种方法的终极对比 | 终极对比表 + 结论 | 终极森林图 · 方法决策树 |
 
 </div>
 
